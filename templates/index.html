@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Foodie - Online Food Delivery</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <nav class="navbar">
+        <h1>🍔 Foodie</h1>
+
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero" id="home">
+    <div class="hero-content">
+        <h2>Delicious Food Delivered To Your Door</h2>
+        <p>Fresh, tasty and affordable food for everyone.</p>
+        <a href="#menu" class="btn">Explore Menu</a>
+    </div>
+</section>
+
+<section class="menu" id="menu">
+
+    <h2>Our Popular Foods</h2>
+    <p class="subtitle">Choose your favourite food</p>
+
+    <div class="food-container">
+
+        {% for food in foods %}
+
+        <div class="food-card">
+
+            <img src="{{ food.image }}" alt="{{ food.name }}">
+
+            <div class="food-info">
+                <h3>{{ food.name }}</h3>
+
+                <p>{{ food.category }}</p>
+
+                <div class="food-bottom">
+                    <span>₹{{ food.price }}</span>
+                    <button onclick="orderFood('{{ food.name }}')">
+                        Order Now
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</section>
+
+<section class="about" id="about">
+    <h2>Why Choose Foodie?</h2>
+    <p>
+        We provide delicious food, fresh ingredients,
+        affordable prices and a great food experience.
+    </p>
+</section>
+
+<footer id="contact">
+    <h2>🍔 Foodie</h2>
+    <p>Good Food. Good Mood.</p>
+    <p>© 2026 Foodie. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function orderFood(food) {
+        alert("Thank you! You selected " + food);
+    }
+</script>
+
+</body>
+</html>
